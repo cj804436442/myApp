@@ -5,7 +5,7 @@
       <div class="resume-top_right">
         <div class="resume-top_right-name" @click="getPdf('#pdfDom')">崔捷</div>
         <div class="resume-top_right-info">
-          <span> 在职·月内到岗·25岁·本科·两年经验 </span>
+          <span> xxxxxxxxxxx </span>
         </div>
         <div class="resume-top_right-concat">
           <span class="resume-top_right-concat_tel">18452481821</span>
