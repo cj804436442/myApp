@@ -1,23 +1,34 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <Loading :visible="isLoading" />
     <router-view/>
   </div>
 </template>
 
 <script>
+import Loading from "../common/components/loading.vue"
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Loading
+  },
+  data() {
+    return {
+      isLoading: false,
+    }
+  },
+  mounted() {
+    this.$root.$on("loading", (is) => {
+      this.isLoading = is
+    })
+  },
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
+  min-height: 100%;
+  background: #f4f4f4;
 }
 </style>
