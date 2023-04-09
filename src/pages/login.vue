@@ -19,7 +19,12 @@
       </el-input>
       <div class="login_buttons">
         <el-button size="mini">注册</el-button>
-        <el-button type="primary" size="mini" @click="loginIn(account,password)">登录</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          @click="loginIn(account, password)"
+          >登录</el-button
+        >
       </div>
     </div>
   </div>
@@ -36,14 +41,17 @@ export default {
     };
   },
   methods: {
-    loginIn(account,password) {
-      if(!account || !password) return this.$message.warning("请输入账号或密码")
-      if(account == 'c2s14' && password == '594210') {
-        this.$router.push({path:'/mainPage',query: {id:'1'}})
+    async loginIn(account, password) {
+      const { data } = await this.$service.login({
+        uname: account,
+        pwd: password,
+      });
+      if (data.code == 200) {
+        this.$router.push({ path: "/mainPage", query: { id: "1" } });
       } else {
-        this.$message.warning("密码错误")
+        return this.$message.warning("密码错误");
       }
-    }
+    },
   },
 };
 </script>

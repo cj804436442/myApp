@@ -1,6 +1,7 @@
 // 导出页面为PDF格式
 import html2Canvas from "html2canvas";
 import JsPDF from "jspdf";
+
 const htmlToPdf = {
   getPdf(title) {
     html2Canvas(document.querySelector("#pdfDom"), {
