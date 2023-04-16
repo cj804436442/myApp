@@ -42,12 +42,14 @@ export default {
   },
   methods: {
     async loginIn(account, password) {
+      this.$loading(true);
       const { data } = await this.$service.login({
         uname: account,
         pwd: password,
       });
+      this.$loading(false);
       if (data.code == 200) {
-        this.$router.push({ path: "/mainPage", query: { id: "1" } });
+        this.$router.push({ path: "/photoAlbum", query: { id: "1" } });
       } else {
         return this.$message.warning("密码错误");
       }
