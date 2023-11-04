@@ -1,28 +1,31 @@
 <template>
   <div id="app">
     <Loading :visible="isLoading" />
-    <router-view/>
+    <!-- <Head></Head> -->
+    <router-view />
   </div>
 </template>
 
 <script>
-import Loading from "../common/components/loading.vue"
+import Loading from "../common/components/loading.vue";
+import Head from "../common/components/head.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Loading
+    Loading,
+    Head,
   },
   data() {
     return {
       isLoading: false,
-    }
+    };
   },
   mounted() {
     this.$root.$on("loading", (is) => {
-      this.isLoading = is
-    })
+      this.isLoading = is;
+    });
   },
-}
+};
 </script>
 
 <style lang="less" scoped>

@@ -65,7 +65,7 @@ export default {
       fileLimit: 5,
       //请求头
       headers: { "Content-Type": "multipart/form-data" },
-    };
+    };  
   },
   methods: {
     //上传文件之前

@@ -49,3 +49,7 @@ export const editStudent = async param => {
 export const login = async param => {
   return await fetch(`${CONTEXTPATH}/login`, param);
 };
+
+export const getDataList = async param => {
+  return await fetch(`${CONTEXTPATH}/employList`, param);
+};

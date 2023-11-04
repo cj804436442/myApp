@@ -49,7 +49,7 @@ export default {
       });
       this.$loading(false);
       if (data.code == 200) {
-        this.$router.push({ path: "/photoAlbum", query: { id: "1" } });
+        this.$router.push({ path: "/managPages" });
       } else {
         return this.$message.warning("密码错误");
       }
