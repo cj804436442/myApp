@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "head",
+  name: "Head",
   components: {},
   data() {
     return {};

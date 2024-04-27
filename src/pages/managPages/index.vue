@@ -14,7 +14,7 @@ import Layout from "../../../common/components/layout.vue";
 import LeftMenu from "./component/leftMenu.vue";
 import RightPart from "./component/rightPart.vue";
 export default {
-  name: "managPages",
+  name: "managPages1",
   components: {
     Head,
     Layout,

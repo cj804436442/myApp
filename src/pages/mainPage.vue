@@ -9,7 +9,7 @@
 import Navicator from "./navicator.vue";
 import MyResume from "./myResume.vue";
 export default {
-  name: "navicator",
+  name: "main",
   components: { Navicator, MyResume },
   data() {
     return {};
