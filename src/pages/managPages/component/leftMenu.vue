@@ -1,25 +1,23 @@
 <template>
   <div class="main">
     <el-menu
-      default-active="1-4-1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      @select="select"
       :collapse="isCollapse"
+      :default-active="defaultActive"
+      style="min-height: 100%;"
+      router
     >
-      <el-menu-item index="1">
-        <i class="el-icon-menu"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
-      <el-submenu index="2">
+      <el-submenu index="1">
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">导航</span>
+          <span slot="title">臭狗蛋卷</span>
         </template>
-        <el-menu-item index="1-4-1">员工信息</el-menu-item>
-        <el-submenu index="1-4">
-          <span slot="title">考勤管理</span>
-          <el-menu-item index="1-4-2">员工考勤</el-menu-item>
+        <el-menu-item index="rightPart">管理员账号</el-menu-item>
+        <el-submenu index="2">
+          <span slot="title">蛋卷相册</span>
+          <el-menu-item index="photoAlbum">相册列表</el-menu-item>
         </el-submenu>
       </el-submenu>
     </el-menu>
@@ -29,19 +27,23 @@
 <script>
 export default {
   components: {},
+  computed: {
+    defaultActive: function() {
+      return this.$route.path.replace("/", "");
+    }
+  },
   data() {
     return {
-      isCollapse: false,
+      isCollapse: false
     };
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
-  },
+    handleOpen(key, keyPath) {},
+    handleClose(key, keyPath) {},
+    select(a, b, c) {
+      console.log(a, b, c);
+    }
+  }
 };
 </script>
 

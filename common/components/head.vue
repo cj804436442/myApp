@@ -1,7 +1,7 @@
 <template>
   <div class="head">
     <div class="logo"></div>
-    <div class="name">公司员工管理系统</div>
+    <div class="name">蛋卷是只狗</div>
   </div>
 </template>
 
@@ -30,13 +30,14 @@ export default {
   .logo {
     width: 40px;
     height: 40px;
-    background-image: url("../../src/assets/cj.png");
+    background-image: url("../../src/assets/doghead.png");
     background-size: 40px;
     margin-left: 20px;
+    border-radius: 50%;
   }
   .name {
     margin-left: 20px;
-    font-family: serif;
+    font-family: cursive;
     font-weight: 700;
     font-size: 24px;
   }

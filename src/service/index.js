@@ -1,7 +1,7 @@
 import qs from "qs";
 import fetch from "../../lib/fetch";
 
-export const CONTEXTPATH = (window.CONTEXTPATH = window.CONTEXTPATH || "/api");
+export const CONTEXTPATH = (window.CONTEXTPATH = window.CONTEXTPATH || "/process");
 
 export const xService = async param => {
   return await fetch(
@@ -13,43 +13,32 @@ export const xService = async param => {
   // 可以自定义修改axios实例
 };
 
-export const getUserInfo = async param => {
-  return await fetch.get(
-    `${CONTEXTPATH}/student/query.do?id=3`,
-    qs.stringify(param)
-  );
+
+export const addAdmin = async param => {
+  return await fetch(`${CONTEXTPATH}/addAdmin`, param);
 };
 
-export const queryById = async param => {
-  return await fetch(`${CONTEXTPATH}/student/query.do`, qs.stringify(param));
-};
-
-export const queryAll = async param => {
-  return await fetch.get(
-    `${CONTEXTPATH}/student/queryAll.do`,
-    qs.stringify(param)
-  );
+export const addBook = async param => {
+  return await fetch(`${CONTEXTPATH}/addBook`, param);
 };
 
 export const deleteById = async param => {
-  return await fetch(`${CONTEXTPATH}/student/delete.do`, qs.stringify(param));
-};
-
-export const addStudent = async param => {
-  return await fetch(
-    `${CONTEXTPATH}/student/addStudent.do`,
-    qs.stringify(param)
-  );
-};
-
-export const editStudent = async param => {
-  return await fetch(`${CONTEXTPATH}/student/update.do`, qs.stringify(param));
+  return await fetch(`${CONTEXTPATH}/deleteById`, param);
 };
 
 export const login = async param => {
   return await fetch(`${CONTEXTPATH}/login`, param);
 };
 
-export const getDataList = async param => {
-  return await fetch(`${CONTEXTPATH}/employList`, param);
+export const register = async param => {
+  return await fetch(`${CONTEXTPATH}/register`, param);
 };
+
+export const getDataList = async param => {
+  return await fetch(`${CONTEXTPATH}/search`, param);
+};
+// 图书列表接口
+export const getBookList = async param => {
+  return await fetch(`${CONTEXTPATH}/searchBook`, param);
+};
+

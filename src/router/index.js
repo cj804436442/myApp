@@ -1,14 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Login from "../pages/login.vue";
 import Student from "../pages/student.vue";
 import MainPage from "../pages/mainPage.vue";
-import photoAlbum from "../pages/photoAlbum/index.vue";
-import managPages from "../pages/managPages/index.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const Login = r => require.ensure([], () => r(require('../pages/login.vue')), 'Login');
+const managPages = r => require.ensure([], () => r(require('../pages/managPages/managPages.vue')), 'managPages');
+const photoAlbum = r => require.ensure([], () => r(require('../pages/photoAlbum/photoAlbum.vue')), 'photoAlbum');
+const rightPart = r => require.ensure([], () => r(require('../pages/managPages/component/rightPart.vue')), 'rightPart');
+const router = new Router({
   routes: [
     {
       path: "/",
@@ -26,14 +27,39 @@ export default new Router({
       component: MainPage
     },
     {
-      path: "/photoAlbum",
-      name: "photoAlbum",
-      component: photoAlbum
-    },
-    {
       path: "/managPages",
       name: "managPages",
-      component: managPages
+      component: managPages,
+      children: [
+        // {
+        //   path: '',
+        //   component: home,
+        //   meta: [],
+        // },
+        {
+          path: "/photoAlbum",
+          name: "photoAlbum",
+          component: photoAlbum
+        },
+        {
+          path: "/rightPart",
+          name: "rightPart",
+          component: rightPart
+        },
+      ]
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/') {
+    next()
+  }
+  const user = localStorage.getItem("user")
+  if (!user && to.path !== '/') {
+    return next("/")
+  }
+  next()
+})
+
+export default router

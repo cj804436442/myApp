@@ -18,7 +18,7 @@
       >
       </el-input>
       <div class="login_buttons">
-        <el-button size="mini">注册</el-button>
+        <el-button size="mini" @click="register(account, password)">注册</el-button>
         <el-button
           type="primary"
           size="mini"
@@ -41,14 +41,31 @@ export default {
     };
   },
   methods: {
-    async loginIn(account, password) {
+    async register(account, password) {
+      if(account == "" || password == "") {
+        return this.$message.warning("请输入账号或密码");
+      }
       this.$loading(true);
-      const { data } = await this.$service.login({
-        uname: account,
-        pwd: password,
+      const { data } = await this.$service.register({
+        name: account,
+        password: password,
       });
       this.$loading(false);
       if (data.code == 200) {
+        this.$message.success("注册成功");
+      } else {
+        return this.$message.warning(data.msg);
+      }
+    },
+    async loginIn(account, password) {
+      this.$loading(true);
+      const { data } = await this.$service.login({
+        name: account,
+        password: password,
+      });
+      this.$loading(false);
+      if (data.code == 200) {
+        localStorage.setItem("user",JSON.stringify(data.data))
         this.$router.push({ path: "/managPages" });
       } else {
         return this.$message.warning("密码错误");

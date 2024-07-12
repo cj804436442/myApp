@@ -75,7 +75,7 @@ export default {
   .logo {
     width: 40px;
     height: 40px;
-    background: url("../assets/cj.png") no-repeat center;
+    background: url("../assets/doghead.png") no-repeat center;
     background-size: contain;
   }
   .menu-item {

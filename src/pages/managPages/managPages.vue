@@ -3,7 +3,7 @@
     <Head></Head>
     <Layout left="200" right="0" :right-foldable="true">
       <LeftMenu slot="left"></LeftMenu>
-      <RightPart slot="center"> </RightPart>
+      <router-view slot="center"></router-view>
     </Layout>
   </div>
 </template>
